@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ article.title }}{% endblock %}
+
+{% block meta %}
+    <meta property="og:title" content="{{ article.title }}" />
+    <meta property="og:type" content="article" />
+    {#    <meta property="og:description" content="{{ article.description }}" />#}
+    {#    <meta property="og:image" content="{{ article.image }}" />#}
+    <meta property="og:url" content="{{ app.request.schemeAndHttpHost }}{{ path('app_article_show', {'id': article.id, 'slug': article.slug}) }}" />
+    <meta property="og:site_name" content="LesPotoSymfo.tech" />
+{% endblock %}
+
+{% block body %}
+    <h1>{{ article.title }}</h1>
+    <p>{{ article.content }}</p>
+    <hr/>
+    <p>
+        Créé le {{ article.createdAt|date('d/m/Y H:i:s') }}
+        Par {{article.author.username}}
+        {% if article.updatedAt > article.createdAt %}, modifié le {{ article.updatedAt|date('d/m/Y H:i:s') }}{% endif %}
+    </p>
+    <button id="toggle">Comment section</button>
+    <div id="comments-section">
+        {% for comment in article.comments %}
+            <article>
+                <p>
+                    {{ comment.content}}
+                </p>
+                <p>
+                    Créé le {{ comment.createdAt|date('d/m/Y H:i:s') }}
+                    Par {{ comment.author.username }}
+                </p>
+            </article>
+        {% endfor %}
+    </div>
+{% endblock %}

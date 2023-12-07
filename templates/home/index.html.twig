@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bienvenue{% endblock %}
+
+{% block body %}
+    {% if articles is empty %}
+        <i>Aucun article publié</i>
+    {% else %}
+        <h1>Liste</h1>
+        {% for article in articles %}
+        <article>
+            <h2>
+                <a href="{{ path('app_article_show', {'id': article.id, 'slug': article.slug}) }}">{{ article.title }}</a>
+            </h2>
+            <p>
+                {{ article.content }}
+            </p>
+        </article>
+        {% endfor %}
+    {% endif %}
+{% endblock %}

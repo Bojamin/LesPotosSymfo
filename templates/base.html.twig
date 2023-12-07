@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="{{ app.request.locale }}" xmlns:og="http://ogp.me/ns#">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        {% block meta %}{% endblock %}
+        <title>{% block title %}Welcome!{% endblock %} - LesPotoSymfo.tech</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+    </head>
+    <body>
+    
+    <nav class="">
+    <form action="{{ path('search_request')}}">
+    <input type="search" name="search"/>
+    <button type="submit">Rechercher</button>
+     </form>
+    </nav>
+
+    <div class="bird-container bird-container--one">
+    <div class="bird bird--one"></div>
+    </div>
+    <div class="bird-container bird-container--one">
+    <div class="bird bird--one"></div>
+  </div>
+  
+  <div class="bird-container bird-container--two">
+    <div class="bird bird--two"></div>
+  </div>
+  
+  <div class="bird-container bird-container--three">
+    <div class="bird bird--three"></div>
+  </div>
+  
+  <div class="bird-container bird-container--four">
+    <div class="bird bird--four"></div>
+  </div>
+        {% block body %}{% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+    </body>
+</html>

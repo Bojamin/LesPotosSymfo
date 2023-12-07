@@ -1,0 +1,22 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Nouvel article{% endblock %}
+
+{% block body %}
+    <h1>
+        {% if article.id is not null %}
+            Modifier un article
+        {% else %}
+            Créer un nouvel article
+        {% endif %}
+    </h1>
+
+    {{ form_start(articleForm) }}
+        {{ form_row(articleForm.title) }}
+        {{ form_row(articleForm.content) }}
+        {% if article.slug is not null %}
+            Slug<input type="text" name="slug" value="{{ article.slug }}" disabled>
+        {% endif %}
+        <button type="submit">Enregistrer</button>
+    {{ form_end(articleForm) }}
+{% endblock %}
